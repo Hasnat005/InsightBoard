@@ -2,32 +2,32 @@ import type { Candidate, Kpi, PipelinePoint } from "@/types/analytics";
 
 export const kpis: Kpi[] = [
   {
-    id: "time-to-hire",
-    label: "Time to Hire",
-    value: "24 days",
+    id: "revenue",
+    label: "Revenue",
+    value: "$1.28M",
+    trend: "up",
+    delta: "+12.4%",
+  },
+  {
+    id: "users",
+    label: "Users",
+    value: "48,920",
+    trend: "up",
+    delta: "+6.8%",
+  },
+  {
+    id: "orders",
+    label: "Orders",
+    value: "9,473",
     trend: "down",
-    delta: "-3.2 days",
+    delta: "-2.1%",
   },
   {
-    id: "offer-acceptance",
-    label: "Offer Acceptance",
-    value: "82%",
+    id: "conversion-rate",
+    label: "Conversion Rate",
+    value: "4.32%",
     trend: "up",
-    delta: "+4.1%",
-  },
-  {
-    id: "pipeline-velocity",
-    label: "Pipeline Velocity",
-    value: "3.1x",
-    trend: "up",
-    delta: "+0.4x",
-  },
-  {
-    id: "quality-of-hire",
-    label: "Quality of Hire",
-    value: "4.6/5",
-    trend: "flat",
-    delta: "+0.0",
+    delta: "+0.6%",
   },
 ];
 

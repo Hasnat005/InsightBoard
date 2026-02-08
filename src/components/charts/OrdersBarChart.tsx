@@ -11,18 +11,21 @@ import {
 } from "recharts";
 import type { OrdersSeriesPoint } from "@/types/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
 import { Skeleton } from "@/components/ui/Skeleton";
 
 export type OrdersBarChartProps = {
   data: OrdersSeriesPoint[];
   loading?: boolean;
   error?: string | null;
+  onRetry?: () => void;
 };
 
 const OrdersBarChartComponent = ({
   data,
   loading = false,
   error = null,
+  onRetry,
 }: OrdersBarChartProps) => {
   return (
     <Card>
@@ -42,11 +45,21 @@ const OrdersBarChartComponent = ({
           </div>
         )}
         {!loading && error && (
-          <div className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-600">
-            {error}
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-600">
+            <span>{error}</span>
+            {onRetry && (
+              <Button size="sm" variant="outline" onClick={onRetry}>
+                Retry
+              </Button>
+            )}
           </div>
         )}
-        {!loading && !error && (
+        {!loading && !error && data.length === 0 && (
+          <div className="rounded-xl border border-dashed border-slate-200 p-4 text-sm text-slate-500">
+            No orders data available for this range.
+          </div>
+        )}
+        {!loading && !error && data.length > 0 && (
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={data} margin={{ left: 4, right: 24 }}>

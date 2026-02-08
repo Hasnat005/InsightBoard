@@ -29,8 +29,14 @@ export function DashboardPage() {
   const isInitialLoading = loading || !data;
 
   const updatedLabel = useMemo(() => {
-    if (!stats?.updatedAt) return "Updating now";
-    return new Date(stats.updatedAt).toLocaleString();
+    const updatedAt = stats?.updatedAt;
+    if (!updatedAt) return "Updating now";
+    const timestamp = Date.parse(updatedAt);
+    if (Number.isNaN(timestamp)) return "Updating now";
+    return new Intl.DateTimeFormat(undefined, {
+      dateStyle: "medium",
+      timeStyle: "short",
+    }).format(timestamp);
   }, [stats?.updatedAt]);
 
   return (
@@ -49,7 +55,12 @@ export function DashboardPage() {
 
         <FilterBar />
 
-        <KpiGrid items={stats?.kpis ?? []} />
+        <KpiGrid
+          items={stats?.kpis ?? []}
+          loading={isInitialLoading}
+          error={error}
+          onRetry={fetchDashboardData}
+        />
 
         <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <ChartSection data={stats?.pipeline ?? []} />
@@ -61,16 +72,19 @@ export function DashboardPage() {
             data={data?.revenue ?? []}
             loading={isInitialLoading}
             error={error}
+            onRetry={fetchDashboardData}
           />
           <OrdersBarChart
             data={data?.orders ?? []}
             loading={isInitialLoading}
             error={error}
+            onRetry={fetchDashboardData}
           />
           <UserDistributionPie
             data={data?.users ?? []}
             loading={isInitialLoading}
             error={error}
+            onRetry={fetchDashboardData}
           />
         </div>
 

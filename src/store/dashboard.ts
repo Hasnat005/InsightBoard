@@ -1,13 +1,13 @@
 import { create } from "zustand";
-import type { DashboardStats, DateRange, UserType } from "@/types/dashboard";
-import { fetchDashboardStats } from "@/services/dashboard";
+import type { DashboardData, DateRange, UserType } from "@/types/dashboard";
+import { fetchDashboardData } from "@/services/dashboard";
 
 export type DashboardState = {
   dateRange: DateRange;
   userType: UserType;
   loading: boolean;
   error: string | null;
-  data: DashboardStats | null;
+  data: DashboardData | null;
   setDateRange: (range: DateRange) => void;
   setUserType: (type: UserType) => void;
   fetchDashboardData: () => Promise<void>;
@@ -25,7 +25,7 @@ export const useDashboardStore = create<DashboardState>((set, get) => ({
     const { dateRange, userType } = get();
     set({ loading: true, error: null });
     try {
-      const data = await fetchDashboardStats(dateRange, userType);
+      const data = await fetchDashboardData(dateRange, userType);
       set({ data, loading: false });
     } catch (error) {
       const message =

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import type { Candidate } from "@/types/analytics";
 
 const stageStyles: Record<Candidate["stage"], string> = {
@@ -11,7 +12,7 @@ type CandidatesCardProps = {
   candidates: Candidate[];
 };
 
-export function CandidatesCard({ candidates }: CandidatesCardProps) {
+function CandidatesCardComponent({ candidates }: CandidatesCardProps) {
   return (
     <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
       <div className="flex items-center justify-between">
@@ -53,3 +54,5 @@ export function CandidatesCard({ candidates }: CandidatesCardProps) {
     </section>
   );
 }
+
+export const CandidatesCard = memo(CandidatesCardComponent);

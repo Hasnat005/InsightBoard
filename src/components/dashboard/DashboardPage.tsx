@@ -1,15 +1,25 @@
 "use client";
 
 import { useEffect, useMemo } from "react";
+import dynamic from "next/dynamic";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { CandidatesCard } from "@/components/dashboard/CandidatesCard";
 import { ChartSection } from "@/components/dashboard/ChartSection";
 import { DataStateCard } from "@/components/dashboard/DataStateCard";
 import { FilterBar } from "@/components/dashboard/FilterBar";
 import { KpiGrid } from "@/components/dashboard/KpiGrid";
-import { OrdersBarChart } from "@/components/charts/OrdersBarChart";
-import { RevenueLineChart } from "@/components/charts/RevenueLineChart";
-import { UserDistributionPie } from "@/components/charts/UserDistributionPie";
+const RevenueLineChart = dynamic(
+  () => import("@/components/charts/RevenueLineChart").then((m) => m.RevenueLineChart),
+  { ssr: false }
+);
+const OrdersBarChart = dynamic(
+  () => import("@/components/charts/OrdersBarChart").then((m) => m.OrdersBarChart),
+  { ssr: false }
+);
+const UserDistributionPie = dynamic(
+  () => import("@/components/charts/UserDistributionPie").then((m) => m.UserDistributionPie),
+  { ssr: false }
+);
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { useDashboardStore } from "@/store/dashboard";
 

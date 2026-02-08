@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { clsx } from "clsx";
 import { Card, CardContent } from "@/components/ui/Card";
@@ -15,7 +16,7 @@ export type KpiCardProps = {
   trend: "up" | "down";
 };
 
-export function KpiCard({ title, value, change, trend }: KpiCardProps) {
+function KpiCardComponent({ title, value, change, trend }: KpiCardProps) {
   const Icon = trend === "up" ? ArrowUpRight : ArrowDownRight;
 
   return (
@@ -39,3 +40,5 @@ export function KpiCard({ title, value, change, trend }: KpiCardProps) {
     </Card>
   );
 }
+
+export const KpiCard = memo(KpiCardComponent);

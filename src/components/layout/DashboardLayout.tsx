@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { Header } from "@/components/layout/Header";
 import { MobileSidebar } from "@/components/layout/MobileSidebar";
 import { Sidebar } from "@/components/layout/Sidebar";
+import { Container } from "@/components/ui/Container";
 
 type DashboardLayoutProps = {
   children: ReactNode;
@@ -20,14 +21,14 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
       </a>
       <MobileSidebar />
       <Sidebar />
-      <div className="flex min-h-screen flex-1 flex-col">
+      <div className="flex min-h-screen min-w-0 flex-1 flex-col">
         <Header />
         <main
           id="main-content"
           tabIndex={-1}
-          className="flex-1 overflow-y-auto px-4 py-6 md:px-8"
+          className="flex-1 overflow-x-hidden overflow-y-auto py-6 sm:py-8"
         >
-          {children}
+          <Container>{children}</Container>
         </main>
       </div>
     </div>

@@ -51,7 +51,7 @@ export function DashboardPage() {
 
   return (
     <DashboardLayout>
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-8">
+      <div className="flex w-full flex-col gap-6 sm:gap-8">
         <SectionHeader
           eyebrow="Overview"
           title="Hiring performance at a glance"
@@ -72,12 +72,13 @@ export function DashboardPage() {
           onRetry={fetchDashboardData}
         />
 
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <ChartSection data={stats?.pipeline ?? []} />
           <DataStateCard candidates={stats?.candidates ?? []} />
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-3">
+        {/* Stack charts on tablet/mobile and switch to grid on desktop. */}
+        <div className="grid gap-5 lg:grid-cols-3">
           <RevenueLineChart
             data={data?.revenue ?? []}
             loading={isInitialLoading}

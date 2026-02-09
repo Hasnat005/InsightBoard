@@ -16,6 +16,7 @@ export type UserDistributionPieProps = {
 };
 
 const COLORS = ["#1f2937", "#6366f1", "#22c55e"];
+const LEGEND_DOT_CLASSES = ["bg-slate-900", "bg-indigo-500", "bg-emerald-500"];
 
 const UserDistributionPieComponent = ({
   data,
@@ -25,15 +26,15 @@ const UserDistributionPieComponent = ({
 }: UserDistributionPieProps) => {
   return (
     <Card className="transition-shadow hover:shadow-md">
-      <CardHeader className="flex items-center justify-between">
-        <div>
+      <CardHeader className="flex flex-wrap items-start justify-between gap-3">
+        <div className="min-w-0">
           <CardTitle>User Distribution</CardTitle>
           <p className="text-sm text-slate-500">
             Breakdown by subscription tier
           </p>
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-4 sm:p-6">
         {loading && (
           <div className="space-y-3">
             <Skeleton className="h-4 w-40" rounded="full" />
@@ -68,15 +69,15 @@ const UserDistributionPieComponent = ({
           </div>
         )}
         {!loading && !error && data.length > 0 && (
-          <div className="h-64 w-full">
+          <div className="h-56 w-full sm:h-64">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
                   data={data}
                   dataKey="value"
                   nameKey="period"
-                  innerRadius={60}
-                  outerRadius={95}
+                  innerRadius={50}
+                  outerRadius={85}
                   paddingAngle={4}
                   stroke="#ffffff"
                 >
@@ -100,7 +101,24 @@ const UserDistributionPieComponent = ({
                     boxShadow: "0 10px 25px -10px rgba(15, 23, 42, 0.2)",
                   }}
                 />
-                <Legend verticalAlign="bottom" iconType="circle" />
+                <Legend
+                  verticalAlign="bottom"
+                  // Custom legend to control spacing and text contrast.
+                  content={({ payload }) => (
+                    <ul className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-slate-700">
+                      {(payload ?? []).map((item, index) => (
+                        <li key={item.value} className="flex items-center gap-2">
+                          <span
+                            className={`size-2 rounded-full ${
+                              LEGEND_DOT_CLASSES[index % LEGEND_DOT_CLASSES.length]
+                            }`}
+                          />
+                          <span className="font-medium">{item.value}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                />
               </PieChart>
             </ResponsiveContainer>
           </div>

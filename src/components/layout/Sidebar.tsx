@@ -13,7 +13,8 @@ export function Sidebar() {
   return (
     <aside
       className={clsx(
-        "hidden border-r border-slate-200 bg-white md:flex md:flex-col",
+        // Desktop-only persistent sidebar (collapsed state is user-driven).
+        "hidden border-r border-slate-200 bg-white lg:flex lg:flex-col",
         isCollapsed ? "w-20" : "w-64"
       )}
       aria-label="Primary"

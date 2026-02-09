@@ -41,10 +41,14 @@ export function FilterBar() {
   );
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-sm transition-shadow hover:shadow-md">
-      <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Date range">
+    <div className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-sm transition-shadow hover:shadow-md sm:flex-row sm:items-center sm:justify-between">
+      <div
+        className="flex flex-wrap items-center gap-2"
+        role="group"
+        aria-label="Date range"
+      >
         <span className="text-sm font-semibold text-slate-600">Date range</span>
-        <div className="flex items-center gap-2 rounded-full bg-slate-100 p-1">
+        <div className="flex flex-wrap items-center gap-2 rounded-full bg-slate-100 p-1">
           {dateRanges.map((range) => (
             <Button
               key={range.value}
@@ -65,7 +69,11 @@ export function FilterBar() {
         </div>
       </div>
       <Dropdown
-        label={userTypeOptions.find((option) => option.value === userType)?.label ?? "User type"}
+        className="w-full sm:w-auto"
+        label={
+          userTypeOptions.find((option) => option.value === userType)?.label ??
+          "User type"
+        }
         items={userTypeOptions.map((option) => ({
           id: option.value,
           label: option.label,

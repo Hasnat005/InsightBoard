@@ -50,12 +50,14 @@ export function Dropdown({ label, items, align = "right", className }: DropdownP
     };
   }, []);
 
+  const alignmentClasses = align === "right" ? "sm:right-0 sm:left-auto" : "sm:left-0";
+
   return (
-    <div className={clsx("relative inline-flex", className)}>
+    <div className={clsx("relative inline-flex w-full sm:w-auto", className)}>
       <button
         ref={triggerRef}
         onClick={() => setOpen((prev) => !prev)}
-        className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20"
+        className="inline-flex w-full items-center justify-between gap-2 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 sm:w-auto"
         aria-haspopup="menu"
         aria-expanded={open}
       >
@@ -67,12 +69,15 @@ export function Dropdown({ label, items, align = "right", className }: DropdownP
         role="menu"
         aria-hidden={!open}
         className={clsx(
-          "absolute z-40 mt-2 w-56 rounded-xl border border-slate-200 bg-white p-2 text-sm shadow-lg transition",
-          align === "right" ? "right-0" : "left-0",
+          "absolute z-40 mt-2 rounded-xl border border-slate-200 bg-white p-2 text-sm shadow-lg transition",
+          "left-0 right-0 w-auto max-w-[calc(100vw-1rem)]",
+          "sm:left-auto sm:right-auto sm:w-auto sm:min-w-[200px] sm:max-w-[calc(100vw-2rem)]",
+          alignmentClasses,
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         )}
       >
-        {items.map((item) => (
+        <div className="max-h-72 overflow-auto">
+          {items.map((item) => (
           <button
             key={item.id}
             role="menuitem"
@@ -94,7 +99,8 @@ export function Dropdown({ label, items, align = "right", className }: DropdownP
               <span className="text-xs text-slate-500">{item.description}</span>
             )}
           </button>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

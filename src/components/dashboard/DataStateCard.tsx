@@ -47,13 +47,13 @@ export function DataStateCard({ candidates }: DataStateCardProps) {
   }, [status]);
 
   return (
-    <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div>
+    <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md sm:p-6">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="min-w-0">
           <h2 className="text-lg font-semibold text-slate-900">Live Activity</h2>
           <p className="text-sm text-slate-500">{subtitle}</p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-nowrap items-center gap-2 sm:shrink-0">
           <Button
             size="sm"
             variant="outline"

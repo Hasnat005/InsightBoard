@@ -6,6 +6,7 @@ type UiState = {
   toggleSidebar: () => void;
   openMobileNav: () => void;
   closeMobileNav: () => void;
+  toggleMobileNav: () => void;
 };
 
 export const useUiStore = create<UiState>((set) => ({
@@ -15,4 +16,6 @@ export const useUiStore = create<UiState>((set) => ({
     set((state) => ({ isSidebarCollapsed: !state.isSidebarCollapsed })),
   openMobileNav: () => set({ isMobileNavOpen: true }),
   closeMobileNav: () => set({ isMobileNavOpen: false }),
+  toggleMobileNav: () =>
+    set((state) => ({ isMobileNavOpen: !state.isMobileNavOpen })),
 }));

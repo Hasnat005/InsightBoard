@@ -33,15 +33,15 @@ const RevenueLineChartComponent = ({
 }: RevenueLineChartProps) => {
   return (
     <Card className="transition-shadow hover:shadow-md">
-      <CardHeader className="flex items-center justify-between">
-        <div>
+      <CardHeader className="flex flex-wrap items-start justify-between gap-3">
+        <div className="min-w-0">
           <CardTitle>Monthly Revenue</CardTitle>
           <p className="text-sm text-slate-500">
             Net new revenue across the last 12 months
           </p>
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-4 sm:p-6">
         {loading && (
           <div className="space-y-3">
             <Skeleton className="h-4 w-40" rounded="full" />
@@ -76,7 +76,7 @@ const RevenueLineChartComponent = ({
           </div>
         )}
         {!loading && !error && data.length > 0 && (
-          <div className="h-64 w-full">
+          <div className="h-56 w-full sm:h-64">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={data} margin={{ left: 4, right: 24 }}>
                 <XAxis

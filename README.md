@@ -1,33 +1,56 @@
 # InsightBoard
 
-Production-ready analytics dashboard built with Next.js App Router, TypeScript, Tailwind CSS, Zustand, and Recharts.
+## Overview
+InsightBoard is a production-ready hiring analytics dashboard built with the Next.js App Router. It delivers KPI summaries, pipeline performance, and cohort insights with a polished, accessible UI and responsive layout.
 
-## Requirements
+## Features
+- KPI overview with loading, empty, and error states
+- Interactive charts (line, bar, pie) powered by Recharts
+- Filterable reporting window and user segment controls
+- Responsive layout with sidebar navigation and mobile drawer
+- Accessible UI patterns with focus states and ARIA support
+- Optimized rendering using memoization and dynamic imports
 
+## Tech Stack
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- Zustand
+- Recharts
+- Axios (API client scaffold)
+
+## Architecture Decisions
+- App Router for routing and layout composition
+- Feature-oriented structure with shared UI primitives
+- Zustand for lightweight global state and async data fetching
+- Dynamic import for charts to avoid SSR rendering issues
+- Service layer to separate data access from UI components
+- Typed domain models in a dedicated types folder
+
+## Setup Instructions
+Requirements:
 - Node.js 18+ (recommended 20+)
 
-## Scripts
+Install and run:
+1. `npm install`
+2. `npm run dev`
+3. Open http://localhost:3000
 
+Useful scripts:
 - `npm run dev` — start dev server
 - `npm run build` — production build
 - `npm run start` — start production server
 - `npm run lint` — run lint checks
 
-## Project Structure
+## Deployment to Vercel
+1. Push the repository to GitHub.
+2. In Vercel, click New Project and import the repository.
+3. Framework preset: Next.js.
+4. Build command: `npm run build`.
+5. Output: `.next` (auto-detected).
+6. Click Deploy.
 
-```
-src/
-	app/        // App Router routes and layouts
-	components/ // Reusable UI components
-	store/      // Zustand stores
-	services/   // API clients and data access
-	types/      // Shared TypeScript types
-	lib/        // Utilities and helpers
-	data/       // Static data and fixtures
-```
-
-## Getting Started
-
-1. Install dependencies: `npm install`
-2. Start the dev server: `npm run dev`
-3. Open http://localhost:3000
+## Screenshots
+- Dashboard overview: /public/screenshots/overview.png
+- KPI grid: /public/screenshots/kpis.png
+- Charts section: /public/screenshots/charts.png

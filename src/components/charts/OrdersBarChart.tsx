@@ -30,15 +30,15 @@ const OrdersBarChartComponent = ({
 }: OrdersBarChartProps) => {
   return (
     <Card className="transition-shadow hover:shadow-md">
-      <CardHeader className="flex items-center justify-between">
-        <div>
+      <CardHeader className="flex flex-wrap items-start justify-between gap-3">
+        <div className="min-w-0">
           <CardTitle>Monthly Orders</CardTitle>
           <p className="text-sm text-slate-500">
             Confirmed orders by month
           </p>
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-4 sm:p-6">
         {loading && (
           <div className="space-y-3">
             <Skeleton className="h-4 w-40" rounded="full" />
@@ -73,7 +73,7 @@ const OrdersBarChartComponent = ({
           </div>
         )}
         {!loading && !error && data.length > 0 && (
-          <div className="h-64 w-full">
+          <div className="h-56 w-full sm:h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={data} margin={{ left: 4, right: 24 }}>
                 <XAxis

@@ -22,9 +22,9 @@ function KpiCardComponent({ title, value, change, trend }: KpiCardProps) {
   return (
     <Card className="transition-shadow hover:shadow-md">
       <CardContent className="p-5">
-        <p className="text-sm text-slate-500">{title}</p>
+        <p className="text-xs font-medium text-slate-500 sm:text-sm">{title}</p>
         <div className="mt-3 flex items-baseline justify-between gap-2">
-          <h3 className="text-2xl font-semibold text-slate-900">{value}</h3>
+          <h3 className="text-2xl font-semibold text-slate-900 sm:text-3xl">{value}</h3>
           <div
             className={clsx(
               "flex items-center gap-1 rounded-full bg-slate-100 px-2 py-1 text-xs font-semibold",

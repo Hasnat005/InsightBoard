@@ -22,15 +22,15 @@ type ChartCardProps = {
 
 export function ChartCard({ data }: ChartCardProps) {
   return (
-    <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
-      <div className="flex items-center justify-between">
-        <div>
+    <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md sm:p-6">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div className="min-w-0">
           <h2 className="text-lg font-semibold text-slate-900">Pipeline Flow</h2>
           <p className="text-sm text-slate-500">
             Weekly candidate progression across stages
           </p>
         </div>
-        <div className="flex gap-3 text-xs text-slate-500">
+        <div className="flex flex-wrap gap-3 text-xs text-slate-500">
           <span className="flex items-center gap-1">
             <span className="size-2 rounded-full" style={{ background: COLORS.screened }} />
             Screened
@@ -48,7 +48,7 @@ export function ChartCard({ data }: ChartCardProps) {
           </span>
         </div>
       </div>
-      <div className="mt-6 h-72 w-full">
+      <div className="mt-6 h-56 w-full sm:h-72">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data} margin={{ left: 8, right: 24 }}>
             <XAxis

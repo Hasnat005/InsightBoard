@@ -50,6 +50,14 @@ Useful scripts:
 5. Output: `.next` (auto-detected).
 6. Click Deploy.
 
+## Live Demo
+https://insight-board-psi.vercel.app/
+
+## Assumptions
+- Dashboard data is mocked client-side with a simulated network delay.
+- No authentication is required for the demo build.
+
+
 ## Screenshots
 - Dashboard overview:
 	![Dashboard overview](/public/screenshots/overview.png)

@@ -41,8 +41,8 @@ export function FilterBar() {
   );
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
-      <div className="flex flex-wrap items-center gap-2">
+    <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-sm transition-shadow hover:shadow-md">
+      <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Date range">
         <span className="text-sm font-semibold text-slate-600">Date range</span>
         <div className="flex items-center gap-2 rounded-full bg-slate-100 p-1">
           {dateRanges.map((range) => (
@@ -50,6 +50,7 @@ export function FilterBar() {
               key={range.value}
               size="sm"
               variant={dateRange === range.value ? "primary" : "ghost"}
+              aria-pressed={dateRange === range.value}
               className={clsx(
                 "h-8 px-3",
                 dateRange === range.value

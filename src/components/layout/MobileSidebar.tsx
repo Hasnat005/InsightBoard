@@ -44,12 +44,14 @@ export function MobileSidebar() {
             <div className="flex size-10 items-center justify-center rounded-xl bg-slate-900 text-sm font-semibold text-white">
               IB
             </div>
-            <span className="text-sm font-semibold">InsightBoard</span>
+            <span className="text-sm font-semibold text-slate-900">
+              InsightBoard
+            </span>
           </div>
           <button
             ref={closeButtonRef}
             onClick={closeMobileNav}
-            className="rounded-md p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900"
+            className="rounded-md p-2 text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 active:scale-95"
             aria-label="Close navigation"
           >
             <X className="size-5" aria-hidden="true" />
@@ -66,7 +68,7 @@ export function MobileSidebar() {
                     href={item.href}
                     onClick={closeMobileNav}
                     className={clsx(
-                      "group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                      "group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all hover:translate-x-0.5 active:scale-[0.99]",
                       isActive
                         ? "bg-slate-900 text-white"
                         : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"

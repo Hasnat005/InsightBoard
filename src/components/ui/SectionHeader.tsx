@@ -16,15 +16,21 @@ export function SectionHeader({
   className,
 }: SectionHeaderProps) {
   return (
-    <div className={clsx("flex flex-wrap items-start justify-between gap-4", className)}>
+    <div className={clsx("flex flex-wrap items-start justify-between gap-5", className)}>
       <div>
         {eyebrow && (
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
             {eyebrow}
           </p>
         )}
-        <h2 className="text-2xl font-semibold text-slate-900">{title}</h2>
-        {description && <p className="mt-1 text-sm text-slate-500">{description}</p>}
+        <h2 className="text-2xl font-semibold text-slate-900 sm:text-3xl">
+          {title}
+        </h2>
+        {description && (
+          <p className="mt-2 max-w-2xl text-sm text-slate-500 sm:text-base">
+            {description}
+          </p>
+        )}
       </div>
       {actions && <div className="flex items-center gap-2">{actions}</div>}
     </div>

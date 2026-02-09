@@ -40,7 +40,7 @@ export function UserMenu() {
       <button
         ref={buttonRef}
         onClick={() => setOpen((prev) => !prev)}
-        className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-2 py-1.5 text-sm font-medium text-slate-700 shadow-sm transition hover:border-slate-300"
+        className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-2 py-1.5 text-sm font-medium text-slate-700 shadow-sm transition hover:border-slate-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20 active:scale-[0.99]"
         aria-haspopup="menu"
         aria-expanded={open}
       >
@@ -64,14 +64,14 @@ export function UserMenu() {
       >
         <button
           role="menuitem"
-          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/10"
         >
           <User className="size-4" aria-hidden="true" />
           Profile
         </button>
         <button
           role="menuitem"
-          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/10"
         >
           <Settings className="size-4" aria-hidden="true" />
           Settings
@@ -79,7 +79,7 @@ export function UserMenu() {
         <div className="my-1 border-t border-slate-200" />
         <button
           role="menuitem"
-          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-red-600 hover:bg-red-50"
+          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-red-600 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-200"
         >
           <LogOut className="size-4" aria-hidden="true" />
           Sign out

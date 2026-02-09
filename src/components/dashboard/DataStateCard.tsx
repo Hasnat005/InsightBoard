@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { AlertTriangle, Loader2, RefreshCw, ShieldAlert } from "lucide-react";
 import type { Candidate } from "@/types/analytics";
+import { Button } from "@/components/ui/Button";
 
 type Status = "loading" | "success" | "empty" | "error";
 
@@ -46,30 +47,34 @@ export function DataStateCard({ candidates }: DataStateCardProps) {
   }, [status]);
 
   return (
-    <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="text-lg font-semibold text-slate-900">Live Activity</h2>
           <p className="text-sm text-slate-500">{subtitle}</p>
         </div>
         <div className="flex items-center gap-2">
-          <button
-            className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-600 transition hover:border-slate-300"
+          <Button
+            size="sm"
+            variant="outline"
+            className="h-8 px-3 text-xs"
             onClick={() => loadData()}
           >
             <RefreshCw className="size-3.5" aria-hidden="true" />
             Refresh
-          </button>
-          <button
-            className="inline-flex items-center gap-2 rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-xs font-semibold text-rose-600 transition hover:border-rose-300"
+          </Button>
+          <Button
+            size="sm"
+            variant="danger"
+            className="h-8 px-3 text-xs"
             onClick={() => loadData("error")}
           >
             <ShieldAlert className="size-3.5" aria-hidden="true" />
             Test error
-          </button>
+          </Button>
         </div>
       </div>
-      <div className="mt-6">
+      <div className="mt-6" aria-live="polite">
         {status === "loading" && (
           <div className="flex items-center gap-3 text-sm text-slate-500">
             <Loader2 className="size-4 animate-spin" aria-hidden="true" />

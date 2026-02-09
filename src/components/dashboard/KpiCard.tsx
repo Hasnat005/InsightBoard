@@ -20,7 +20,7 @@ function KpiCardComponent({ title, value, change, trend }: KpiCardProps) {
   const Icon = trend === "up" ? ArrowUpRight : ArrowDownRight;
 
   return (
-    <Card>
+    <Card className="transition-shadow hover:shadow-md">
       <CardContent className="p-5">
         <p className="text-sm text-slate-500">{title}</p>
         <div className="mt-3 flex items-baseline justify-between gap-2">

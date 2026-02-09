@@ -14,7 +14,7 @@ type CandidatesCardProps = {
 
 function CandidatesCardComponent({ candidates }: CandidatesCardProps) {
   return (
-    <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-lg font-semibold text-slate-900">Recent Candidates</h2>
@@ -30,7 +30,7 @@ function CandidatesCardComponent({ candidates }: CandidatesCardProps) {
         {candidates.map((candidate) => (
           <div
             key={candidate.id}
-            className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-100 bg-slate-50 px-4 py-3"
+            className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-100 bg-slate-50 px-4 py-3 transition hover:border-slate-200 hover:bg-slate-100/70"
           >
             <div>
               <p className="font-medium text-slate-900">{candidate.name}</p>

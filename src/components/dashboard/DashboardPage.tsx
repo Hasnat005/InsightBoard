@@ -51,7 +51,7 @@ export function DashboardPage() {
 
   return (
     <DashboardLayout>
-      <div className="flex flex-col gap-6">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-8">
         <SectionHeader
           eyebrow="Overview"
           title="Hiring performance at a glance"

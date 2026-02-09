@@ -1,6 +1,7 @@
 "use client";
 
 import { memo } from "react";
+import { AlertTriangle } from "lucide-react";
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import type { UsersSeriesPoint } from "@/types/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
@@ -23,7 +24,7 @@ const UserDistributionPieComponent = ({
   onRetry,
 }: UserDistributionPieProps) => {
   return (
-    <Card>
+    <Card className="transition-shadow hover:shadow-md">
       <CardHeader className="flex items-center justify-between">
         <div>
           <CardTitle>User Distribution</CardTitle>
@@ -40,8 +41,17 @@ const UserDistributionPieComponent = ({
           </div>
         )}
         {!loading && error && (
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-600">
-            <span>{error}</span>
+          <div
+            role="alert"
+            className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-rose-200 bg-rose-50 p-4"
+          >
+            <div className="flex items-start gap-3 text-rose-700">
+              <AlertTriangle className="mt-0.5 size-4" aria-hidden="true" />
+              <div>
+                <p className="text-sm font-semibold">Unable to load users</p>
+                <p className="text-sm text-rose-600">{error}</p>
+              </div>
+            </div>
             {onRetry && (
               <Button size="sm" variant="outline" onClick={onRetry}>
                 Retry
@@ -50,8 +60,11 @@ const UserDistributionPieComponent = ({
           </div>
         )}
         {!loading && !error && data.length === 0 && (
-          <div className="rounded-xl border border-dashed border-slate-200 p-4 text-sm text-slate-500">
-            No user distribution data available for this range.
+          <div className="rounded-xl border border-dashed border-slate-200 bg-slate-50 p-4">
+            <p className="text-sm font-semibold text-slate-700">No user data yet</p>
+            <p className="text-sm text-slate-500">
+              Adjust the filters to load a different reporting window.
+            </p>
           </div>
         )}
         {!loading && !error && data.length > 0 && (
@@ -79,6 +92,8 @@ const UserDistributionPieComponent = ({
                     }
                     return String(value ?? "");
                   }}
+                  labelStyle={{ color: "#0f172a", fontWeight: 600 }}
+                  itemStyle={{ color: "#0f172a" }}
                   contentStyle={{
                     borderRadius: 12,
                     borderColor: "#e2e8f0",

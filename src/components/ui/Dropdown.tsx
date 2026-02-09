@@ -55,7 +55,7 @@ export function Dropdown({ label, items, align = "right", className }: DropdownP
       <button
         ref={triggerRef}
         onClick={() => setOpen((prev) => !prev)}
-        className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300"
+        className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/20"
         aria-haspopup="menu"
         aria-expanded={open}
       >
@@ -83,7 +83,7 @@ export function Dropdown({ label, items, align = "right", className }: DropdownP
               setOpen(false);
             }}
             className={clsx(
-              "flex w-full flex-col rounded-lg px-3 py-2 text-left transition",
+              "flex w-full flex-col rounded-lg px-3 py-2 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900/10",
               item.disabled
                 ? "cursor-not-allowed text-slate-300"
                 : "text-slate-700 hover:bg-slate-100"

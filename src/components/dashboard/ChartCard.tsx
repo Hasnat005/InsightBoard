@@ -22,7 +22,7 @@ type ChartCardProps = {
 
 export function ChartCard({ data }: ChartCardProps) {
   return (
-    <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-lg font-semibold text-slate-900">Pipeline Flow</h2>
@@ -51,10 +51,25 @@ export function ChartCard({ data }: ChartCardProps) {
       <div className="mt-6 h-72 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data} margin={{ left: 8, right: 24 }}>
-            <XAxis dataKey="week" stroke="#94a3b8" tickLine={false} />
-            <YAxis stroke="#94a3b8" tickLine={false} />
+            <XAxis
+              dataKey="week"
+              stroke="#94a3b8"
+              tickLine={false}
+              axisLine={false}
+              tickMargin={8}
+              tick={{ fontSize: 12, fill: "#94a3b8" }}
+            />
+            <YAxis
+              stroke="#94a3b8"
+              tickLine={false}
+              axisLine={false}
+              tickMargin={8}
+              tick={{ fontSize: 12, fill: "#94a3b8" }}
+            />
             <Tooltip
               cursor={{ stroke: "#e2e8f0", strokeWidth: 1 }}
+              labelStyle={{ color: "#0f172a", fontWeight: 600 }}
+              itemStyle={{ color: "#0f172a" }}
               contentStyle={{
                 borderRadius: 12,
                 borderColor: "#e2e8f0",

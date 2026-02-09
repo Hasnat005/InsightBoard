@@ -14,7 +14,7 @@ type KpiGridProps = {
 export function KpiGrid({ items, loading = false, error = null, onRetry }: KpiGridProps) {
   if (loading) {
     return (
-      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <section className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
         {Array.from({ length: 4 }).map((_, index) => (
           <Card key={`kpi-skeleton-${index}`}>
             <CardContent className="p-5">
@@ -62,7 +62,7 @@ export function KpiGrid({ items, loading = false, error = null, onRetry }: KpiGr
   }
 
   return (
-    <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+    <section className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
       {items.map((kpi) => (
         <KpiCard
           key={kpi.id}

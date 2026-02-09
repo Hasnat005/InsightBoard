@@ -19,12 +19,14 @@ export function Sidebar() {
       aria-label="Primary"
     >
       <div className="flex items-center gap-3 px-4 py-5">
-        <div className="flex size-10 items-center justify-center rounded-xl bg-slate-900 text-sm font-semibold text-white">
+        <div className="flex size-10 items-center justify-center rounded-xl bg-slate-900 text-sm font-semibold text-white shadow-sm transition hover:shadow-md">
           IB
         </div>
         {!isCollapsed && (
           <div className="flex flex-col">
-            <span className="text-sm font-semibold">InsightBoard</span>
+            <span className="text-sm font-semibold text-slate-900">
+              InsightBoard
+            </span>
             <span className="text-xs text-slate-500">Hiring Analytics</span>
           </div>
         )}
@@ -39,7 +41,7 @@ export function Sidebar() {
                 <Link
                   href={item.href}
                   className={clsx(
-                    "group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                    "group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all hover:translate-x-0.5 active:scale-[0.99]",
                     isActive
                       ? "bg-slate-900 text-white"
                       : "text-slate-600 hover:bg-slate-100 hover:text-slate-900",

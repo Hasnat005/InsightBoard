@@ -51,6 +51,9 @@ Useful scripts:
 6. Click Deploy.
 
 ## Screenshots
-- Dashboard overview: /public/screenshots/overview.png
-- KPI grid: /public/screenshots/kpis.png
-- Charts section: /public/screenshots/charts.png
+- Dashboard overview:
+	![Dashboard overview](/public/screenshots/overview.png)
+- KPI grid:
+	![KPI grid](/public/screenshots/kpis.png)
+- Charts section:
+	![Charts section](/public/screenshots/charts.png)
